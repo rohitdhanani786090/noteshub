@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Notes</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://img.freepik.com/free-photo/illustration-rain-futuristic-city_23-2151406606.jpg?semt=ais_hybrid&w=740') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+    h1.title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+    .search-bar {
+      margin: 1rem 0 2rem;
+      animation: fadeInUp 1s ease;
+    }
+    .search-bar input {
+      padding: 1rem 1.5rem;
+      font-size: 1.2rem;
+      border-radius: 25px;
+      border: none;
+      width: 785px;
+      max-width: 90vw;
+      outline: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .subjects {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 1.5s ease;
+    }
+    .subject {
+      width: 100px;
+      height: 100px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+      backdrop-filter: blur(5px);
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .subject:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      animation: fadeInUp 0.5s ease;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .chapter-box {
+      background: #000000ee;
+      padding: 2rem;
+      border-radius: 15px;
+      border: 2px solid #fff;
+      max-width: 800px;
+      width: 90%;
+      animation: fadeInUp 0.5s ease;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      justify-items: center;
+      align-items: center;
+    }
+    .chapter-box h2 {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .chapter-box button {
+      padding: 1rem;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+    .chapter-box button:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .resources {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      text-align: center;
+      grid-column: 1 / -1;
+    }
+    .resources a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .resources a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 800px) {
+      .chapter-box {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 500px) {
+      .subject {
+        width: 80px;
+        height: 80px;
+        font-size: 0.8rem;
+      }
+      .search-bar input {
+        width: 90vw;
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+      }
+      .chapter-box {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">Smart Study Hub</h1>
+  <div class="search-bar">
+    <input type="text" placeholder="Search notes..." />
+  </div>
+  <div class="subjects">
+    <div class="subject" onclick="goToNotes('science')">Science</div>
+    <div class="subject" onclick="goToNotes('maths')">Maths</div>
+    <div class="subject" onclick="goToNotes('hindi')">Hindi</div>
+    <div class="subject" onclick="goToNotes('english')">English</div>
+    <div class="subject" onclick="goToNotes('sst')">SST</div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="chapter-box" id="scienceChapters">
+      <h2>Science Chapters</h2>
+      <button onclick="showResources(this, 'Chapter 1')">Chapter 1 Matter in Our Surroundings</button>
+      <button onclick="showResources(this, 'Chapter 2')">Chapter 2 Is Matter Around Us Pure?</button>
+      <button onclick="showResources(this, 'Chapter 3')">Chapter 3 Atoms and Molecules</button>
+      <button onclick="showResources(this, 'Chapter 4')">Chapter 4 Structure of the Atom</button>
+      <button onclick="showResources(this, 'Chapter 5')">Chapter 5 The Fundamental Unit of Life</button>
+      <button onclick="showResources(this, 'Chapter 6')">Chapter 6 Tissues</button>
+      <button onclick="showResources(this, 'Chapter 7')">Chapter 7 Motion</button>
+      <button onclick="showResources(this, 'Chapter 8')">Chapter 8 Force and Laws of Motion</button>
+      <button onclick="showResources(this, 'Chapter 9')">Chapter 9 Gravitation</button>
+      <button onclick="showResources(this, 'Chapter 10')">Chapter 10 Work and Energy</button>
+      <button onclick="showResources(this, 'Chapter 11')">Chapter 11 Sound</button>
+      <button onclick="showResources(this, 'Chapter 12')">Chapter 12 Improvement in Food Resources</button>
+    </div>
+  </div>
+
+  <script>
+    function goToNotes(subject) {
+      const overlay = document.getElementById('overlay');
+      const existingNote = document.querySelector('.notification');
+      if (existingNote) existingNote.remove();
+
+      if (subject === 'science') {
+        overlay.style.display = 'flex';
+      } else {
+        overlay.style.display = 'none';
+        const note = document.createElement('div');
+        note.className = 'notification';
+        note.innerText = 'Coming soon...';
+        document.body.appendChild(note);
+        setTimeout(() => {
+          note.remove();
+        }, 3000);
+      }
+    }
+
+    function showResources(button, chapter) {
+      const alreadyOpen = button.nextElementSibling;
+      if (alreadyOpen && alreadyOpen.classList.contains('resources')) return;
+
+      const resDiv = document.createElement('div');
+      resDiv.className = 'resources';
+      resDiv.innerHTML = `
+        <strong>${chapter}</strong>
+        <a href="file:///C:/Users/Admin-pc/Documents/software/books.html" target="_blank">📘 Book PDF</a>
+        <a href="file:///C:/Users/Admin-pc/Documents/software/notes.html" target="_blank">📝 Notes DOC</a>
+      `;
+      button.parentNode.querySelectorAll('.resources').forEach(e => e.remove());
+      button.insertAdjacentElement('afterend', resDiv);
+    }
+
+    document.getElementById('overlay').addEventListener('click', function(e) {
+      if (e.target.id === 'overlay') {
+        this.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
