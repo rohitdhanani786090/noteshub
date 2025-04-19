@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>View Notes</title>
+  <title>Smart Study Hub</title>
   <style>
     * {
       box-sizing: border-box;
@@ -70,21 +70,6 @@
       background-color: rgba(255, 255, 255, 0.3);
       transform: scale(1.1);
     }
-    .toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(255, 255, 255, 0.1);
-      color: white;
-      padding: 1rem 2rem;
-      border: 1px solid #fff;
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
-      display: none;
-      z-index: 1000;
-      animation: fadeOut 3s forwards;
-    }
     .overlay {
       position: fixed;
       top: 0;
@@ -109,7 +94,7 @@
       width: 90%;
       animation: fadeInUp 0.5s ease;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       justify-items: center;
       align-items: center;
@@ -136,59 +121,33 @@
     .chapter-box button:hover {
       background: rgba(255, 255, 255, 0.3);
     }
-    .resources {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      text-align: center;
-      grid-column: 1 / -1;
-    }
-    .resources a {
-      color: #fff;
-      text-decoration: none;
-      padding: 0.5rem;
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 1rem 2rem;
       border: 1px solid #fff;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .resources a:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      display: none;
+      z-index: 1000;
+      animation: fadeOut 3s forwards;
     }
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeOut {
       0% { opacity: 1; }
       80% { opacity: 1; }
       100% { opacity: 0; display: none; }
-    }
-    @media (max-width: 800px) {
-      .chapter-box {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    @media (max-width: 500px) {
-      .subject {
-        width: 80px;
-        height: 80px;
-        font-size: 0.8rem;
-      }
-      .search-bar input {
-        width: 90vw;
-        font-size: 1rem;
-        padding: 0.75rem 1rem;
-      }
-      .chapter-box {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
   </style>
 </head>
@@ -205,85 +164,28 @@
     <div class="subject" onclick="goToNotes('sst')">SST</div>
     <div class="subject" onclick="goToNotes('games')">Games</div>
   </div>
-
   <div class="overlay" id="overlay">
     <div class="chapter-box" id="chapterBox"></div>
   </div>
-
   <div class="toast" id="toast">Coming soon...</div>
-
   <script>
     function goToNotes(subject) {
       const overlay = document.getElementById('overlay');
       const chapterBox = document.getElementById('chapterBox');
       chapterBox.innerHTML = '';
-
-      if (subject === 'science') {
+      if (subject === 'games') {
         chapterBox.innerHTML = `
-          <h2>Science Chapters</h2>
-          ${Array.from({length: 15}, (_, i) =>
-            `<button onclick="showResources(this, 'Chapter ${i + 1}')">Chapter ${i + 1}</button>`
-          ).join('')}
-        `;
-        overlay.style.display = 'flex';
-
-      } else if (subject === 'sst') {
-        chapterBox.innerHTML = `
-          <h2>Economics</h2>
-          <button onclick="showSSTResources(this, 'Chapter 1')">Chapter 1: The Story of Village Palampur</button>
-          <button onclick="showSSTResources(this, 'Chapter 2')">Chapter 2: People as Resource</button>
-          <button onclick="showSSTResources(this, 'Chapter 3')">Chapter 3: Poverty as a Challenge</button>
-          <button onclick="showSSTResources(this, 'Chapter 4')">Chapter 4: Food Security in India</button>
-          <h2>Geography</h2>
-          <button onclick="showSSTResources(this, 'Chapter 1')">Chapter 1: India</button>
-          <button onclick="showSSTResources(this, 'Chapter 2')">Chapter 2: Physical Features of India</button>
-          <button onclick="showSSTResources(this, 'Chapter 3')">Chapter 3: Drainage</button>
-          <button onclick="showSSTResources(this, 'Chapter 4')">Chapter 4: Climate</button>
-          <button onclick="showSSTResources(this, 'Chapter 5')">Chapter 5: Natural Vegetation and Wildlife</button>
-          <button onclick="showSSTResources(this, 'Chapter 6')">Chapter 6: Population</button>
-        `;
-        overlay.style.display = 'flex';
-
-      } else if (subject === 'games') {
-        chapterBox.innerHTML = `
-          <h2>Games</h2>
-          <button onclick="showToast('Chess coming soon!')">Chess</button>
-          <button onclick="showToast('Tic‑Tac‑Toe coming soon!')">Tic‑Tac‑Toe</button>
-          <button onclick="showToast('Snake coming soon!')">Snake</button>
+          <h2>Mini Games</h2>
+          <button onclick="location.href='https://rohitdhanani786090.github.io/noteshub/flappybird.html'">Flappy Bird</button>
+          <button onclick="showToast('Coming soon...')">Snake</button>
+          <button onclick="showToast('Coming soon...')">Tic Tac Toe</button>
           <button onclick="showToast('More games coming soon!')">Coming Soon</button>
         `;
         overlay.style.display = 'flex';
-
       } else {
         overlay.style.display = 'none';
         showToast("Coming soon...");
       }
-    }
-
-    function showResources(button, chapter) {
-      if (button.nextElementSibling && button.nextElementSibling.classList.contains('resources')) return;
-      button.parentNode.querySelectorAll('.resources').forEach(e => e.remove());
-      const resDiv = document.createElement('div');
-      resDiv.className = 'resources';
-      resDiv.innerHTML = `
-        <strong>${chapter}</strong>
-        <a href="https://rohitdhanani786090.github.io/noteshub/books.html" target="_blank">📘 Book PDF</a>
-        <a href="https://rohitdhanani786090.github.io/noteshub/notes.html" target="_blank">📝 Notes DOC</a>
-      `;
-      button.insertAdjacentElement('afterend', resDiv);
-    }
-
-    function showSSTResources(button, chapter) {
-      if (button.nextElementSibling && button.nextElementSibling.classList.contains('resources')) return;
-      button.parentNode.querySelectorAll('.resources').forEach(e => e.remove());
-      const resDiv = document.createElement('div');
-      resDiv.className = 'resources';
-      resDiv.innerHTML = `
-        <strong>${chapter}</strong>
-        <a href="https://rohitdhanani786090.github.io/noteshub/sstnotes.html" target="_blank">📘 Book PDF</a>
-        <a href="https://rohitdhanani786090.github.io/noteshub/sstnotes.html" target="_blank">📝 Notes DOC</a>
-      `;
-      button.insertAdjacentElement('afterend', resDiv);
     }
 
     function showToast(message) {
