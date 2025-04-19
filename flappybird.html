@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flappy Bird Clone</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { overflow: hidden; background: skyblue; }
+
+    .bird {
+      position: absolute;
+      width: 5vw;
+      height: 5vh;
+      background: yellow;
+      border-radius: 50% 50% 45% 45%;
+      left: 30vw;
+      top: 40vh;
+    }
+
+    .pipe {
+      position: absolute;
+      width: 6vw;
+      background: green;
+      left: 100vw;
+    }
+
+    .message, .score {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      font-size: 4vw;
+      font-weight: bold;
+      color: #333;
+    }
+    .message { top: 20vh; }
+    .score   { top: 2vh; }
+
+    .pause-btn {
+      position: absolute;
+      top: 1vh;
+      right: 2vw;
+      padding: 0.5em 1em;
+      font-size: 1.5vw;
+      background: #fff;
+      border: 2px solid #333;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="bird"></div>
+  <div class="message">Press SPACE or Click to start</div>
+  <div class="score"></div>
+  <button class="pause-btn">Pause</button>
+
+  <script>
+    const GRAVITY = 0.5;
+    const FLAP = -8;
+    const PIPE_SPEED = 3;
+    const PIPE_INT = 1500;
+    const PIPE_GAP = window.innerHeight * 0.25;
+
+    let birdEl = document.querySelector('.bird');
+    let msgEl = document.querySelector('.message');
+    let scoreEl = document.querySelector('.score');
+    let pauseBtn = document.querySelector('.pause-btn');
+
+    let birdY, birdV, pipes, lastPipe, score, state, raf, paused = false;
+
+    function init() {
+      birdY = window.innerHeight * 0.4;
+      birdV = 0;
+      birdEl.style.top = birdY + 'px';
+      pipes.forEach(p => { p.top.remove(); p.bot.remove(); });
+      pipes = [];
+      score = 0;
+      scoreEl.textContent = '';
+      lastPipe = performance.now();
+      state = 'Start';
+      paused = false;
+      msgEl.textContent = 'Press SPACE or Click to start';
+      pauseBtn.textContent = 'Pause';
+    }
+
+    document.addEventListener('keydown', e => {
+      if ((e.key === ' ' || e.code === 'Space') && state !== 'Play') {
+        startGame();
+      } else if ((e.key === ' ' || e.code === 'Space' || e.key === 'ArrowUp') && state === 'Play' && !paused) {
+        birdV = FLAP;
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if (state !== 'Play') {
+        startGame();
+      } else if (!paused) {
+        birdV = FLAP;
+      }
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      if (state !== 'Play') return;
+      paused = !paused;
+      pauseBtn.textContent = paused ? 'Resume' : 'Pause';
+      if (!paused) requestAnimationFrame(loop);
+    });
+
+    function startGame() {
+      init();
+      state = 'Play';
+      msgEl.textContent = '';
+      scoreEl.textContent = 'Score: 0';
+      lastPipe = performance.now();
+      raf = requestAnimationFrame(loop);
+    }
+
+    function loop(ts) {
+      if (state !== 'Play' || paused) return cancelAnimationFrame(raf);
+
+      if (ts - lastPipe > PIPE_INT) {
+        spawn();
+        lastPipe = ts;
+      }
+
+      birdV += GRAVITY;
+      birdY += birdV;
+      birdEl.style.top = birdY + 'px';
+      if (birdY < 0 || birdY + birdEl.offsetHeight > window.innerHeight) {
+        return endGame();
+      }
+
+      pipes.forEach(p => {
+        p.x -= PIPE_SPEED;
+        p.top.style.left = p.x + 'px';
+        p.bot.style.left = p.x + 'px';
+        if (!p.scored && p.x + p.top.offsetWidth < birdEl.offsetLeft) {
+          p.scored = true;
+          scoreEl.textContent = 'Score: ' + (++score);
+        }
+        if (hit(birdEl, p.top) || hit(birdEl, p.bot)) {
+          return endGame();
+        }
+      });
+
+      pipes = pipes.filter(p => {
+        if (p.x + p.top.offsetWidth < 0) {
+          p.top.remove(); p.bot.remove();
+          return false;
+        }
+        return true;
+      });
+
+      raf = requestAnimationFrame(loop);
+    }
+
+    function spawn() {
+      const centerY = Math.random() * (window.innerHeight - PIPE_GAP - 100) + 50;
+      const topH = centerY;
+      const botY = centerY + PIPE_GAP;
+
+      const top = document.createElement('div');
+      top.className = 'pipe';
+      top.style.height = topH + 'px';
+      top.style.top = '0';
+      document.body.appendChild(top);
+
+      const bot = document.createElement('div');
+      bot.className = 'pipe';
+      bot.style.height = (window.innerHeight - botY) + 'px';
+      bot.style.top = botY + 'px';
+      document.body.appendChild(bot);
+
+      pipes.push({ top, bot, x: window.innerWidth, scored: false });
+    }
+
+    function hit(a, b) {
+      const r1 = a.getBoundingClientRect();
+      const r2 = b.getBoundingClientRect();
+      return !(r1.right < r2.left || r1.left > r2.right ||
+               r1.bottom < r2.top || r1.top > r2.bottom);
+    }
+
+    function endGame() {
+      state = 'End';
+      msgEl.textContent = 'Game Over! Press SPACE or Click to restart';
+      cancelAnimationFrame(raf);
+    }
+
+    pipes = [];
+    init();
+  </script>
+</body>
+</html>
