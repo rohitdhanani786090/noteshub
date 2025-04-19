@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>audio test 1</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <audio controls autoplay loop>
+            <source src="C:\Users\Admin-pc\Downloads\Luke-Bergs-Tropical-Soulmp3(chosic.com).mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>          
+    </body>
+</html>
