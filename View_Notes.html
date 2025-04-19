@@ -203,6 +203,7 @@
     <div class="subject" onclick="goToNotes('hindi')">Hindi</div>
     <div class="subject" onclick="goToNotes('english')">English</div>
     <div class="subject" onclick="goToNotes('sst')">SST</div>
+    <div class="subject" onclick="goToNotes('games')">Games</div>
   </div>
 
   <div class="overlay" id="overlay">
@@ -220,11 +221,12 @@
       if (subject === 'science') {
         chapterBox.innerHTML = `
           <h2>Science Chapters</h2>
-          ${Array.from({length: 15}, (_, i) => `
-            <button onclick="showResources(this, 'Chapter ${i + 1}')">Chapter ${i + 1}</button>
-          `).join('')}
+          ${Array.from({length: 15}, (_, i) =>
+            `<button onclick="showResources(this, 'Chapter ${i + 1}')">Chapter ${i + 1}</button>`
+          ).join('')}
         `;
         overlay.style.display = 'flex';
+
       } else if (subject === 'sst') {
         chapterBox.innerHTML = `
           <h2>Economics</h2>
@@ -241,6 +243,17 @@
           <button onclick="showSSTResources(this, 'Chapter 6')">Chapter 6: Population</button>
         `;
         overlay.style.display = 'flex';
+
+      } else if (subject === 'games') {
+        chapterBox.innerHTML = `
+          <h2>Games</h2>
+          <button onclick="showToast('Chess coming soon!')">Chess</button>
+          <button onclick="showToast('Tic‑Tac‑Toe coming soon!')">Tic‑Tac‑Toe</button>
+          <button onclick="showToast('Snake coming soon!')">Snake</button>
+          <button onclick="showToast('More games coming soon!')">Coming Soon</button>
+        `;
+        overlay.style.display = 'flex';
+
       } else {
         overlay.style.display = 'none';
         showToast("Coming soon...");
@@ -267,8 +280,8 @@
       resDiv.className = 'resources';
       resDiv.innerHTML = `
         <strong>${chapter}</strong>
-        <a href="https://rohitdhanani786090.github.io/noteshub/sstnotes.html" target="_blank">📘 Book PDF</a>
-        <a href="https://rohitdhanani786090.github.io/noteshub/sstnotes.html" target="_blank">📝 Notes DOC</a>
+        <a href="C:/Users/Admin-pc/Documents/software/sstnotes.html" target="_blank">📘 Book PDF</a>
+        <a href="C:/Users/Admin-pc/Documents/software/sstnotes.html" target="_blank">📝 Notes DOC</a>
       `;
       button.insertAdjacentElement('afterend', resDiv);
     }
