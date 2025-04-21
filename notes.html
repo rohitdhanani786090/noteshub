@@ -1,212 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Notes Dropdown</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0e0e0e;
-      color: #fff;
-      padding: 2rem;
-    }
-    .accordion {
-      max-width: 800px;
-      margin: 0 auto;
-      width: 100%;
-    }
-    .accordion-item {
-      border: 1px solid #333;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      overflow: hidden;
-      background-color: #1a1a1a;
-    }
-    .accordion-header {
-      padding: 1rem;
-      background-color: #2a2a2a;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .accordion-header:hover {
-      background-color: #3a3a3a;
-    }
-    .accordion-header span {
-      font-size: 1.1rem;
-    }
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      padding: 0 1rem;
-      background-color: #1f1f1f;
-    }
-    .accordion-content p {
-      padding: 1rem 0;
-      margin: 0;
-    }
-    .accordion-item.active .accordion-content {
-      max-height: 3000px;
-    }
-    .accordion-item.active .accordion-header::after {
-      content: '-';
-    }
-    .accordion-header::after {
-      content: '+';
-      font-size: 1.5rem;
-    }
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
-      }
-      .accordion-header span {
-        font-size: 1rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Notes Dropdown</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0e0e0e;
+            color: #fff;
+            padding: 2rem;
+        }
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .accordion-item {
+            border: 1px solid #333;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            background-color: #1a1a1a;
+        }
+        .accordion-header {
+            padding: 1rem;
+            background-color: #2a2a2a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header:hover {
+            background-color: #3a3a3a;
+        }
+        .accordion-header span {
+            font-size: 1.1rem;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1rem;
+            background-color: #1f1f1f;
+        }
+        .accordion-content p {
+            padding: 1rem 0;
+            margin: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 6000px; /* Increased max-height to accommodate detailed notes */
+        }
+        .accordion-item.active .accordion-header::after {
+            content: '-';
+        }
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5rem;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            .accordion-header span {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <h1 style="text-align:center; margin-bottom:2rem;">📚 Chapter Notes</h1>
-  <div class="accordion">
-    <div class="accordion-item">
-      <div class="accordion-header"><span>Chapter 7: Motion</span></div>
-      <div class="accordion-content">
-        <p>
-          <strong>1. What Is Motion?</strong><br>
-          Motion means an object is changing its place or position over time, compared to something we treat as “fixed” (like the ground or a wall).<br><br>
+    <h1 style="text-align:center; margin-bottom:2rem;">📚 Chapter Notes</h1>
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header"><span>Chapter 7: Motion</span></div>
+            <div class="accordion-content">
+                <p>
+                    <strong>1. What Is Motion?</strong><br>
+                    Motion means an object is changing its place or position over time, compared to something we treat as “fixed” (like the ground or a wall).<br><br>
 
-          <strong>2. Distance vs Displacement</strong><br>
-          Distance is the total length of the path travelled.<br>
-          Human language: “How many steps you actually walked, no matter which way.”<br>
-          It’s always positive or zero.<br>
-          Displacement is how far you are from your starting point, in a straight line, plus the direction.<br>
-          Human language: “If you start at your home and end up 2 km east, your displacement is 2 km east.”<br>
-          Can be positive, negative, or zero (if you return to start).<br><br>
+                    <strong>2. Distance vs Displacement</strong><br>
+                    Distance is the total length of the path travelled.<br>
+                    Human language: “How many steps you actually walked, no matter which way.”<br>
+                    It’s always positive or zero.<br>
+                    Displacement is how far you are from your starting point, in a straight line, plus the direction.<br>
+                    Human language: “If you start at your home and end up 2 km east, your displacement is 2 km east.”<br>
+                    Can be positive, negative, or zero (if you return to start).<br><br>
 
-          <strong>3. Speed vs Velocity</strong><br>
-          Speed = Distance covered ÷ Time taken.<br>
-          Human language: “How fast you walked, ignoring direction.”<br>
-          Usually in metres per second (m/s) or kilometres per hour (km/h).<br>
-          Velocity = Displacement ÷ Time taken.<br>
-          Human language: “How fast and in which direction you moved, overall.”<br>
-          If you go east at 5 m/s, your velocity is 5 m/s east.<br><br>
+                    <strong>3. Speed vs Velocity</strong><br>
+                    Speed = Distance covered ÷ Time taken.<br>
+                    Human language: “How fast you walked, ignoring direction.”<br>
+                    Usually in metres per second (m/s) or kilometres per hour (km/h).<br>
+                    Velocity = Displacement ÷ Time taken.<br>
+                    Human language: “How fast and in which direction you moved, overall.”<br>
+                    If you go east at 5 m/s, your velocity is 5 m/s east.<br><br>
 
-          <strong>4. Acceleration</strong><br>
-          Acceleration = Change in velocity ÷ Time taken.<br>
-          Human language: “How quickly you speed up, slow down, or turn around.”<br>
-          If you speed up from 2 m/s to 6 m/s in 2 s, your acceleration is (6–2) m/s ÷ 2 s = 2 m/s².<br><br>
+                    <strong>4. Acceleration</strong><br>
+                    Acceleration = Change in velocity ÷ Time taken.<br>
+                    Human language: “How quickly you speed up, slow down, or turn around.”<br>
+                    If you speed up from 2 m/s to 6 m/s in 2 s, your acceleration is (6–2) m/s ÷ 2 s = 2 m/s².<br><br>
 
-          <strong>5. Types of Motion</strong><br>
-          <em>Uniform Motion:</em> Speed (and velocity) stays the same.<br>
-          Example: A car on cruise control at 60 km/h on a straight road.<br>
-          <em>Non‑uniform Motion:</em> Speed or direction (or both) change.<br>
-          Example: A car slowing at a traffic light, or turning a corner.<br><br>
+                    <strong>5. Types of Motion</strong><br>
+                    <em>Uniform Motion:</em> Speed (and velocity) stays the same.<br>
+                    Example: A car on cruise control at 60 km/h on a straight road.<br>
+                    <em>Non‑uniform Motion:</em> Speed or direction (or both) change.<br>
+                    Example: A car slowing at a traffic light, or turning a corner.<br><br>
 
-          <strong>6. Equations of Uniformly Accelerated Motion</strong><br>
-          When acceleration (a) stays constant:<br>
-          u = initial velocity<br>
-          v = final velocity after time t<br>
-          s = distance travelled in time t<br>
-          v = u + a t<br>
-          s = u t + ½ a t²<br>
-          v² = u² + 2 a s<br><br>
+                    <strong>6. Equations of Uniformly Accelerated Motion</strong><br>
+                    When acceleration (a) stays constant:<br>
+                    u = initial velocity<br>
+                    v = final velocity after time t<br>
+                    s = distance travelled in time t<br>
+                    v = u + a t<br>
+                    s = u t + ½ a t²<br>
+                    v² = u² + 2 a s<br><br>
 
-          <strong>7. Motion Graphs</strong><br>
-          <u>Distance–Time (d–t) Graph</u><br>
-          Flat (horizontal) line → object at rest.<br>
-          Straight, sloping line → constant speed.<br>
-          Curved line → changing speed.<br><br>
-          <u>Velocity–Time (v–t) Graph</u><br>
-          Horizontal line → constant velocity.<br>
-          Slope upwards → positive acceleration.<br>
-          Slope downwards → negative acceleration (slowing down).<br>
-          Area under the curve = distance travelled.<br><br>
+                    <strong>7. Motion Graphs</strong><br>
+                    <u>Distance–Time (d–t) Graph</u><br>
+                    Flat (horizontal) line → object at rest.<br>
+                    Straight, sloping line → constant speed.<br>
+                    Curved line → changing speed.<br><br>
+                    <u>Velocity–Time (v–t) Graph</u><br>
+                    Horizontal line → constant velocity.<br>
+                    Slope upwards → positive acceleration.<br>
+                    Slope downwards → negative acceleration (slowing down).<br>
+                    Area under the curve = distance travelled.<br><br>
 
-          <strong>Key Takeaways</strong><br>
-          Scalar (just size: distance, speed) vs vector (size + direction: displacement, velocity, acceleration).<br>
-          Write formulas as equations + human language.<br>
-          Practice graph reading.<br>
-        </p>
-      </div>
+                    <strong>Key Takeaways</strong><br>
+                    Scalar (just size: distance, speed) vs vector (size + direction: displacement, velocity, acceleration).<br>
+                    Write formulas as equations + human language.<br>
+                    Practice graph reading.<br>
+                </p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header"><span>Chapter 5: The Fundamental Unit of Life</span></div>
+            <div class="accordion-content">
+                <p>
+                    <strong>1. Introduction</strong><br>
+                    All living things are made of cells.<br>
+                    The cell is the basic unit of life.<br>
+                    Robert Hooke discovered cells in 1665 while observing cork.<br><br>
+
+                    <strong>2. Cell Theory</strong><br>
+                    Schleiden and Schwann gave the cell theory, and Virchow added to it.<br>
+                    Main points of cell theory:<br>
+                    All living things are made of cells.<br>
+                    The cell is the structural and functional unit of life.<br>
+                    All cells come from pre-existing cells.<br><br>
+
+                    <strong>3. Types of Organisms</strong><br>
+                    Unicellular: One-celled organisms (e.g., Amoeba).<br>
+                    Multicellular: Made of many cells (e.g., humans, plants).<br><br>
+
+                    <strong>4. Types of Cells</strong><br>
+                    <em>Prokaryotic cells:</em> No nucleus. Simple structure. Example: Bacteria.<br>
+                    <em>Eukaryotic cells:</em> Have a nucleus. More complex. Example: Plant and animal cells.<br><br>
+
+                    <strong>5. Structure of a Cell</strong><br>
+                    <ul>
+                        <li><strong>Cell Membrane:</strong> Controls entry and exit of substances.</li>
+                        <li><strong>Cytoplasm:</strong> Jelly-like substance where organelles float.</li>
+                        <li><strong>Nucleus:</strong> Brain of the cell. Contains DNA and controls activities.</li>
+                    </ul><br>
+
+                    <strong>6. Cell Organelles and Their Functions</strong><br>
+                    <ul>
+                        <li><strong>Endoplasmic Reticulum (ER):</strong> Transport system. Rough ER has ribosomes (makes proteins). Smooth ER doesn’t (makes lipids).</li>
+                        <li><strong>Golgi Apparatus:</strong> Packs and sends proteins to where they’re needed.</li>
+                        <li><strong>Mitochondria:</strong> Produces energy (called the powerhouse of the cell).</li>
+                        <li><strong>Lysosomes:</strong> Digests waste (also called suicide bags).</li>
+                        <li><strong>Plastids:</strong> Found only in plants. Chloroplasts help in photosynthesis.</li>
+                        <li><strong>Vacuoles:</strong> Store food, water, and waste. Large in plant cells; small in animal cells.</li>
+                    </ul><br>
+
+                    <strong>7. Differences between Plant and Animal Cells</strong><br>
+                    <table border="1" cellpadding="5" cellspacing="0" style="width:100%; max-width:100%; color:white;">
+                        <tr><th>Feature</th><th>Plant Cell</th><th>Animal Cell</th></tr>
+                        <tr><td>Cell Wall</td><td>Present</td><td>Absent</td></tr>
+                        <tr><td>Chloroplasts</td><td>Present (for food making)</td><td>Absent</td></tr>
+                        <tr><td>Vacuoles</td><td>One large vacuole</td><td>Many small vacuoles</td></tr>
+                        <tr><td>Shape</td><td>Rectangular or fixed</td><td>Round or irregular</td></tr>
+                        <tr><td>Centrioles</td><td>Absent</td><td>Present</td></tr>
+                    </table><br>
+
+                    <strong>8. Summary</strong><br>
+                    The cell is the smallest unit of life.<br>
+                    Cell theory says that all life is made of cells.<br>
+                    Cells are of two types: prokaryotic and eukaryotic.<br>
+                    Different organelles do different jobs inside the cell.<br>
+                    Plant and animal cells have some key differences.<br>
+                </p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header"><span>Chapter: Matter in Our Surroundings</span></div>
+            <div class="accordion-content">
+                <p>
+                    <strong>Chapter: Matter in Our Surroundings - A Detailed Exploration</strong><br>
+                    <strong>1. Defining Matter:</strong><br>
+                    At its core, matter is anything in the universe that possesses <strong>mass</strong> (amount of substance) and occupies <strong>space</strong> (has volume). Think about it: the book you're reading, the air you breathe, the water you drink, the food you eat, even you yourself – all these are examples of matter. They all have weight (due to gravity acting on their mass) and take up some amount of space.<br><br>
+
+                    <strong>2. The Particulate Nature of Matter:</strong><br>
+                    For a long time, scientists and philosophers debated whether matter was continuous (like a smooth sheet) or made up of tiny particles. Modern science has firmly established that matter is <strong>particulate</strong>, meaning it is composed of incredibly small, discrete units called <strong>particles</strong>. These particles can be atoms or molecules, depending on the substance.<br><br>
+
+                    <strong>Evidence for Particulate Nature:</strong> Several phenomena support this idea:<br>
+                    - <strong>Diffusion:</strong> When you light an incense stick in one corner of a room, its fragrance spreads throughout. This happens because the gaseous particles of the perfume move and mix with the air particles. If matter were continuous, this kind of intermingling wouldn't be easily explained. Similarly, when you add sugar to water, it dissolves and spreads evenly, indicating that water is also made of particles with spaces between them that the sugar particles can occupy.<br>
+                    - <strong>Brownian Motion:</strong> Robert Brown, a botanist, observed that pollen grains suspended in water moved randomly and erratically. This movement is caused by the constant bombardment of the pollen grains by the much smaller, invisible water molecules. This provides direct evidence of the movement of particles in a liquid.<br><br>
+
+                    <strong>3. Characteristics of Matter's Particles:</strong><br>
+                    These tiny particles that make up matter have several key characteristics:<br><br>
+
+                    - <strong>They are incredibly small:</strong> We cannot see individual particles with the naked eye, or even with ordinary microscopes. Their size is on the order of nanometers (one billionth of a meter). Imagine taking a single drop of water and trying to divide it again and again – you would reach a point where you have individual water molecules, and even smaller, hydrogen and oxygen atoms.<br>
+                    - <strong>They have spaces between them:</strong> When you dissolve salt or sugar in water, the level of the water doesn't increase significantly. This suggests that the particles of salt or sugar are occupying the spaces that exist between the particles of water. The extent of these spaces varies in different states of matter. Gases have the largest spaces between their particles, followed by liquids, and then solids have the least.<br>
+                    - <strong>They are constantly moving:</strong> The particles of matter possess <strong>kinetic energy</strong>, which is the energy of motion. This means they are constantly in motion.<br>
+                        - In **solids**, the particles vibrate about their fixed positions. They don't move freely from one place to another.<br>
+                        - In **liquids**, the particles have more kinetic energy than in solids, allowing them to move around and slide past each other. This is why liquids can flow and take the shape of their container.<br>
+                        - In **gases**, the particles have the highest kinetic energy. They move randomly and rapidly in all directions, colliding with each other and the walls of their container. This explains why gases can fill their entire container and exert pressure.<br>
+                    - <strong>They attract each other:</strong> There are <strong>forces of attraction</strong> between the particles of matter. These forces are what hold the particles together. The strength of these attractive forces varies in different states of matter.<br>
+                        - **Solids** have the strongest interparticle forces, which is why they have a definite shape and volume.<br>
+                        - **Liquids** have weaker interparticle forces than solids, allowing them to flow but still maintain a definite volume.<br>
+                        - **Gases** have very weak interparticle forces, which is why they can move freely and occupy any available space.<br><br>
+
+                    <strong>4. States of Matter: A Deeper Look:</strong><br>
+                    As briefly mentioned earlier, matter commonly exists in three physical states: solid, liquid, and gas. These states arise due to the differences in the arrangement and movement of their constituent particles and the strength of the interparticle forces.<br><br>
+
+                    <strong>Solid State:</strong><br>
+                    - <strong>Definite shape and volume:</strong> Solids maintain their shape and volume regardless of the container they are placed in.<br>
+                    - <strong>High density:</strong> The particles are closely packed, resulting in a high mass per unit volume.<br>
+                    - <strong>Incompressibility:</strong> Solids are difficult to compress because the particles have very little space between them.<br>
+                    - <strong>Strong interparticle forces:</strong> The forces holding the particles together are strong, keeping them in fixed positions.<br>
+                    - <strong>Examples:</strong> Wood, stone, metals, ice (at a specific temperature).<br><br>
+
+                    <strong>Liquid State:</strong><br>
+                    - <strong>No definite shape but definite volume:</strong> Liquids take the shape of their container but maintain a fixed volume.<br>
+                    - <strong>Moderate density:</strong> Liquids generally have lower densities than solids (though there are exceptions, like water and ice). The particles are less closely packed.<br>
+                    - <strong>Low compressibility:</strong> Liquids are difficult to compress significantly as there is still not much space between the particles.<br>
+                    - <strong>Weaker interparticle forces than solids:</strong> The forces are strong enough to hold the particles together in a fixed volume but weak enough to allow them to move past each other. This gives liquids the property of fluidity.<br>
+                    - <strong>Examples:</strong> Water, milk, oil, mercury (at room temperature).<br><br>
+
+                    <strong>Gaseous State:</strong><br>
+                    - <strong>No definite shape or volume:</strong> Gases occupy the entire volume of their container and take its shape.<br>
+                    - <strong>Low density:</strong> The particles are far apart, resulting in a low mass per unit volume.<br>
+                    - <strong>High compressibility:</strong> Gases can be easily compressed because there are large spaces between the particles.<br>
+                    - <strong>Very weak interparticle forces:</strong> The forces of attraction between gas particles are negligible under normal conditions, allowing them to move freely and randomly.<br>
+                    - <strong>Examples:</strong> Air (a mixture of gases), oxygen, nitrogen, water vapor (steam).<br><br>
+
+                    <strong>5. Can Matter Change its State?</strong><br>
+                    Yes, matter can transition between its different states by changing conditions of <strong>temperature</strong> and <strong>pressure</strong>. These changes involve overcoming or establishing the interparticle forces and altering the kinetic energy of the particles.<br><br>
+
+                    - <strong>Melting (Solid to Liquid):</strong> When a solid is heated, the particles gain kinetic energy and vibrate more vigorously. At a specific temperature called the <strong>melting point</strong>, the particles have enough energy to overcome the strong interparticle forces holding them in fixed positions, and they start to move more freely, resulting in a liquid state. The temperature remains constant during the melting process even though heat is being supplied because the energy is used to overcome the forces of attraction.<br>
+                    - <strong>Boiling/Vaporization (Liquid to Gas):</strong> When a liquid is heated, its particles gain kinetic energy and move faster. At a specific temperature called the <strong>boiling point</strong>, the particles have enough energy to overcome the interparticle forces completely and escape from the liquid surface as gas molecules. Vaporization can also occur at temperatures below the boiling point, which is called <strong>evaporation</strong>.<br>
+                    - <strong>Condensation (Gas to Liquid):</strong> When a gas is cooled, the kinetic energy of its particles decreases, and they move slower. As they lose energy, the interparticle forces become significant enough to pull the particles closer together, forming a liquid.<br>
+                    - <strong>Freezing (Liquid to Solid):</strong> When a liquid is cooled, the kinetic energy of its particles decreases further. At a specific temperature called thefreezing point</strong> (which is the same as the melting point for a pure substance), the particles lose enough energy to overcome their freedom of movement and settle into fixed positions, forming a solid.<br>
+                    - <strong>Sublimation (Solid to Gas and Vice Versa):</strong> Some substances can directly change from a solid state to a gaseous state without passing through the liquid state, and vice versa. This process is called <strong>sublimation</strong>. Examples include camphor, naphthalene balls, and dry ice (solid carbon dioxide). The reverse process (gas to solid) is sometimes called <strong>deposition</strong>.<br><br>
+
+                    <strong>6. Evaporation in Detail:</strong><br>
+                    <strong>Evaporation</strong> is the process where a liquid changes into a gaseous state at any temperature below its boiling point. It's a <strong>surface phenomenon</strong>, meaning it occurs at the surface of the liquid.<br><br>
+
+                    - <strong>How Evaporation Occurs:</strong> The particles in a liquid have varying amounts of kinetic energy. Even at temperatures below the boiling point, some particles at the surface have enough kinetic energy to overcome the interparticle forces and escape into the surrounding air as gas molecules (vapor).<br>
+                    - <strong>Factors Affecting Evaporation:</strong><br>
+                        - <strong>Surface Area:</strong> A larger surface area provides more opportunity for particles to escape, thus increasing the rate of evaporation. For example, water dries faster when spread out than when kept in a container.<br>
+                        - <strong>Temperature:</strong> Higher temperatures mean the liquid particles have more kinetic energy, and a larger fraction of them will have enough energy to overcome the interparticle forces and evaporate.<br>
+                        - <strong>Humidity:</strong> Humidity is the amount of water vapor present in the air. If the air is already humid, it can hold less additional water vapor, thus decreasing the rate of evaporation. Dry air promotes faster evaporation.<br>
+                        - <strong>Wind Speed:</strong> Wind blowing over the surface of a liquid carries away the water vapor, preventing it from accumulating above the surface and allowing more particles to evaporate.<br>
+                    - <strong>Evaporation Causes Cooling:</strong> When the high-energy particles at the surface of a liquid evaporate, the average kinetic energy of the remaining liquid particles decreases. Since temperature is directly related to the average kinetic energy of the particles, the liquid becomes cooler. This is why we feel cool when sweat evaporates from our skin or when we put on alcohol-based aftershave.<br><br>
+
+                    <strong>In Summary:</strong><br>
+                    "Matter in Our Surroundings" introduces the fundamental concept of matter as anything with mass and volume, composed of tiny, moving, and attracting particles with spaces between them. The chapter explores the three common states of matter – solid, liquid, and gas – highlighting their distinct properties based on particle arrangement and interparticle forces. You also learn about the transitions between these states due to changes in temperature and pressure, with a special focus on the process of evaporation and the factors that influence it. Understanding these basic concepts is crucial for further exploration in the world of chemistry and physics.<br>
+                </p>
+            </div>
+        </div>
+
     </div>
 
-    <div class="accordion-item">
-      <div class="accordion-header"><span>Chapter 5: The Fundamental Unit of Life</span></div>
-      <div class="accordion-content">
-        <p>
-          <strong>1. Introduction</strong><br>
-          All living things are made of cells.<br>
-          The cell is the basic unit of life.<br>
-          Robert Hooke discovered cells in 1665 while observing cork.<br><br>
-
-          <strong>2. Cell Theory</strong><br>
-          Schleiden and Schwann gave the cell theory, and Virchow added to it.<br>
-          Main points of cell theory:<br>
-          All living things are made of cells.<br>
-          The cell is the structural and functional unit of life.<br>
-          All cells come from pre-existing cells.<br><br>
-
-          <strong>3. Types of Organisms</strong><br>
-          Unicellular: One-celled organisms (e.g., Amoeba).<br>
-          Multicellular: Made of many cells (e.g., humans, plants).<br><br>
-
-          <strong>4. Types of Cells</strong><br>
-          <em>Prokaryotic cells:</em> No nucleus. Simple structure. Example: Bacteria.<br>
-          <em>Eukaryotic cells:</em> Have a nucleus. More complex. Example: Plant and animal cells.<br><br>
-
-          <strong>5. Structure of a Cell</strong><br>
-          <ul>
-            <li><strong>Cell Membrane:</strong> Controls entry and exit of substances.</li>
-            <li><strong>Cytoplasm:</strong> Jelly-like substance where organelles float.</li>
-            <li><strong>Nucleus:</strong> Brain of the cell. Contains DNA and controls activities.</li>
-          </ul><br>
-
-          <strong>6. Cell Organelles and Their Functions</strong><br>
-          <ul>
-            <li><strong>Endoplasmic Reticulum (ER):</strong> Transport system. Rough ER has ribosomes (makes proteins). Smooth ER doesn’t (makes lipids).</li>
-            <li><strong>Golgi Apparatus:</strong> Packs and sends proteins to where they’re needed.</li>
-            <li><strong>Mitochondria:</strong> Produces energy (called the powerhouse of the cell).</li>
-            <li><strong>Lysosomes:</strong> Digests waste (also called suicide bags).</li>
-            <li><strong>Plastids:</strong> Found only in plants. Chloroplasts help in photosynthesis.</li>
-            <li><strong>Vacuoles:</strong> Store food, water, and waste. Large in plant cells; small in animal cells.</li>
-          </ul><br>
-
-          <strong>7. Differences between Plant and Animal Cells</strong><br>
-          <table border="1" cellpadding="5" cellspacing="0" style="width:100%; max-width:100%; color:white;">
-            <tr><th>Feature</th><th>Plant Cell</th><th>Animal Cell</th></tr>
-            <tr><td>Cell Wall</td><td>Present</td><td>Absent</td></tr>
-            <tr><td>Chloroplasts</td><td>Present (for food making)</td><td>Absent</td></tr>
-            <tr><td>Vacuoles</td><td>One large vacuole</td><td>Many small vacuoles</td></tr>
-            <tr><td>Shape</td><td>Rectangular or fixed</td><td>Round or irregular</td></tr>
-            <tr><td>Centrioles</td><td>Absent</td><td>Present</td></tr>
-          </table><br>
-
-          <strong>8. Summary</strong><br>
-          The cell is the smallest unit of life.<br>
-          Cell theory says that all life is made of cells.<br>
-          Cells are of two types: prokaryotic and eukaryotic.<br>
-          Different organelles do different jobs inside the cell.<br>
-          Plant and animal cells have some key differences.<br>
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    const items = document.querySelectorAll('.accordion-item');
-    items.forEach(item => {
-      item.querySelector('.accordion-header').addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-        items.forEach(i => i.classList.remove('active'));
-        if (!isOpen) item.classList.add('active');
-      });
-    });
-  </script>
+    <script>
+        const items = document.querySelectorAll('.accordion-item');
+        items.forEach(item => {
+            item.querySelector('.accordion-header').addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+                items.forEach(i => i.classList.remove('active'));
+                if (!isOpen) item.classList.add('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
