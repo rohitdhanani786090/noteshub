@@ -258,6 +258,27 @@
       z-index: 9999;
       cursor: pointer;
     }
+
+    .important-note {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #ffcc00;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-top: 5%;
+      max-width: 700px;
+      text-align: center;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: 0 0 15px #ffcc00aa;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .important-note h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: #ffcc00;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    }
   </style>
 </head>
 
@@ -289,6 +310,14 @@
     <source src="On My Way (PenduJatt.Com.Se).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+  <div class="important-note">
+    <h2>⚠️ Important Note</h2>
+    <p>
+      In this webpage, if you press the <strong>right arrow</strong> key, the music will skip <strong>10 seconds
+        forward</strong>.<br>
+      Pressing the <strong>left arrow</strong> key will rewind the music by <strong>10 seconds</strong>.
+    </p>
+  </div>
   <script>
     function goToNotes(subject) {
       const overlay = document.getElementById('overlay');
