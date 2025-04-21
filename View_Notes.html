@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +11,9 @@
       margin: 0;
       padding: 0;
     }
-    html, body {
+
+    html,
+    body {
       height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: url('https://img.freepik.com/free-photo/illustration-rain-futuristic-city_23-2151406606.jpg?semt=ais_hybrid&w=740') no-repeat center center fixed;
@@ -22,16 +25,19 @@
       padding: 2rem;
       overflow: hidden;
     }
+
     h1.title {
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
       animation: fadeInDown 1s ease;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
+
     .search-bar {
       margin: 1rem 0 2rem;
       animation: fadeInUp 1s ease;
     }
+
     .search-bar input {
       padding: 1rem 1.5rem;
       font-size: 1.2rem;
@@ -40,8 +46,9 @@
       width: 785px;
       max-width: 90vw;
       outline: none;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
+
     .subjects {
       display: flex;
       gap: 1.5rem;
@@ -49,6 +56,7 @@
       justify-content: center;
       animation: fadeInUp 1.5s ease;
     }
+
     .subject {
       width: 100px;
       height: 100px;
@@ -64,12 +72,14 @@
       transition: transform 0.3s, background 0.3s;
       backdrop-filter: blur(5px);
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
+
     .subject:hover {
       background-color: rgba(255, 255, 255, 0.3);
       transform: scale(1.1);
     }
+
     .toast {
       position: fixed;
       bottom: 30px;
@@ -85,6 +95,7 @@
       z-index: 1000;
       animation: fadeOut 3s forwards;
     }
+
     .overlay {
       position: fixed;
       top: 0;
@@ -100,6 +111,7 @@
       overflow-y: auto;
       padding: 2rem;
     }
+
     .chapter-box {
       background: #000000ee;
       padding: 2rem;
@@ -114,11 +126,13 @@
       justify-items: center;
       align-items: center;
     }
+
     .chapter-box h2 {
       grid-column: 1 / -1;
       text-align: center;
       margin: 1rem 0;
     }
+
     .chapter-box button {
       padding: 1rem;
       font-size: 0.9rem;
@@ -131,11 +145,13 @@
       width: 100%;
       height: 100%;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     }
+
     .chapter-box button:hover {
       background: rgba(255, 255, 255, 0.3);
     }
+
     .resources {
       display: flex;
       flex-direction: column;
@@ -146,6 +162,7 @@
       text-align: center;
       grid-column: 1 / -1;
     }
+
     .resources a {
       color: #fff;
       text-decoration: none;
@@ -154,44 +171,96 @@
       border-radius: 5px;
       transition: background 0.3s;
     }
+
     .resources a:hover {
       background: rgba(255, 255, 255, 0.2);
     }
+
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     @keyframes fadeOut {
-      0% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { opacity: 0; display: none; }
+      0% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        display: none;
+      }
     }
+
     @media (max-width: 800px) {
       .chapter-box {
         grid-template-columns: repeat(3, 1fr);
       }
     }
+
     @media (max-width: 500px) {
       .subject {
         width: 80px;
         height: 80px;
         font-size: 0.8rem;
       }
+
       .search-bar input {
         width: 90vw;
         font-size: 1rem;
         padding: 0.75rem 1rem;
       }
+
       .chapter-box {
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    #bg-music {
+      display: none;
+    }
+
+    #click-message {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      z-index: 9999;
+      cursor: pointer;
+    }
   </style>
 </head>
+
 <body>
   <h1 class="title">Smart Study Hub</h1>
   <div class="search-bar">
@@ -212,6 +281,14 @@
 
   <div class="toast" id="toast">Coming soon...</div>
 
+  <!-- Message to prompt user interaction -->
+  <div id="click-message">Click anywhere to start music</div>
+
+  <!-- Hidden audio player -->
+  <audio id="bg-music" loop>
+    <source src="On My Way (PenduJatt.Com.Se).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
   <script>
     function goToNotes(subject) {
       const overlay = document.getElementById('overlay');
@@ -221,9 +298,9 @@
       if (subject === 'science') {
         chapterBox.innerHTML = `
           <h2>Science Chapters</h2>
-          ${Array.from({length: 15}, (_, i) =>
-            `<button onclick="showResources(this, 'Chapter ${i + 1}')">Chapter ${i + 1}</button>`
-          ).join('')}
+          ${Array.from({ length: 15 }, (_, i) =>
+          `<button onclick="showResources(this, 'Chapter ${i + 1}')">Chapter ${i + 1}</button>`
+        ).join('')}
         `;
         overlay.style.display = 'flex';
 
@@ -299,11 +376,48 @@
       }, 2500);
     }
 
-    document.getElementById('overlay').addEventListener('click', function(e) {
+    document.getElementById('overlay').addEventListener('click', function (e) {
       if (e.target.id === 'overlay') {
         this.style.display = 'none';
       }
     });
+
+    const music = document.getElementById('bg-music');
+    const message = document.getElementById('click-message');
+
+    // Start music on first user click
+    document.addEventListener('click', function () {
+      music.play().then(() => {
+        message.style.display = 'none';
+      }).catch((err) => {
+        console.log("Autoplay failed:", err);
+      });
+    }, { once: true });
+
+    // Handle keyboard controls
+    document.addEventListener('keydown', function (event) {
+      if (event.target.matches('input, textarea')) return;
+
+      switch (event.code) {
+        case 'Space':
+          event.preventDefault(); // prevent scroll
+          if (music.paused) {
+            music.play();
+          } else {
+            music.pause();
+          }
+          break;
+
+        case 'ArrowRight':
+          music.currentTime += 10;
+          break;
+
+        case 'ArrowLeft':
+          music.currentTime -= 10;
+          break;
+      }
+    });
   </script>
 </body>
+
 </html>
